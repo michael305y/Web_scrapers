@@ -47,7 +47,7 @@ def find_zip_code_with_bing(address):
     The ZIP code of the given address, or None if the ZIP code cannot be found.
   """
 
-  api_key = 'Ai89VA85o5EWCqERkQ0Y4yQgvPArZ9-c7-cZOqOAODEVsOOL1VrfxBdvyacAOxrg'
+  api_key = 'YOUR_API_KEY'
   base_url = 'https://dev.virtualearth.net/REST/V1/Locations'
   params = {
     'key': api_key,
