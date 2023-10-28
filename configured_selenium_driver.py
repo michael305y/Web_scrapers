@@ -8,18 +8,21 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.service import Service as FirefoxService
+from custom_proxy import make_request
 
+# proxy = make_request()
 
-def initialize_chrome_webdriver():
+def initialize_chrome_webdriver(proxy):
     # Initialize and configure the Chrome WebDriver
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("window-size=1920,1080")
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--disable-gpu')
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
+    # chrome_options.add_argument("window-size=1920,1080")
+    # chrome_options.add_argument('--headless')
+    # chrome_options.add_argument('--disable-gpu')
+    # chrome_options.add_argument("--no-sandbox")
+    # chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument(f'--proxy-server={proxy}')
     service = webdriver.chrome.service.Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service)
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
 
 # Web driver for Firefox
